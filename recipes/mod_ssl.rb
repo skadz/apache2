@@ -16,9 +16,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-if node['apache']['listen'] == ['*:80']
-  node.default['apache']['listen'] = ['*:80', "*:#{node['apache']['mod_ssl']['port']}"]
-end
+node.default['apache']['listen'] += ["*:#{node['apache']['mod_ssl']['port']}"]
 
 include_recipe 'apache2::default'
 
