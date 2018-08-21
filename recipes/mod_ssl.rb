@@ -34,11 +34,8 @@ if platform_family?('rhel', 'fedora', 'suse', 'amazon')
   end
 end
 
-template 'ssl_ports.conf' do
-  path "#{apache_dir}/ports.conf"
-  source 'ports.conf.erb'
-  mode '0644'
-  notifies :restart, 'service[apache2]', :delayed
+apache_conf 'ports' do
+  enable true
 end
 
 apache_module 'ssl' do
