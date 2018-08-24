@@ -35,8 +35,8 @@ if platform_family?('rhel', 'fedora', 'suse', 'amazon')
   end
 end
 
-apache_conf 'ports' do
-  enable true
+apache_module 'ports' do
+  conf true
 end
 
 apache_module 'ssl' do
